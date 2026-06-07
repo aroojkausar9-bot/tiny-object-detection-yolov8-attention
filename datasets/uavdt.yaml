@@ -1,0 +1,17 @@
+# UAVDT Dataset Configuration (Cross-dataset validation)
+# Paper: Du et al., "The Unmanned Aerial Vehicle Benchmark", ECCV 2018
+# Download: https://sites.google.com/view/grli-uavdt
+#
+# Dataset statistics:
+#   Train images : 2,443
+#   Categories   : 3 (vehicle types)
+
+path: ./datasets/UAVDT
+train: images/train
+val:   images/test    # use test split for cross-dataset eval
+
+nc: 3
+names:
+  0: car
+  1: truck
+  2: bus

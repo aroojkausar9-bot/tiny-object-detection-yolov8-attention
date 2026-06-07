@@ -1,0 +1,26 @@
+# VisDrone2019-DET Dataset Configuration
+# Download: https://github.com/VisDrone/VisDrone-Dataset
+#
+# Dataset statistics (training split):
+#   Images        : 6,471
+#   Total objects : 108,365
+#   Tiny objects  : 93,032  (85.9% below 32×32 px)
+
+path: ./datasets/VisDrone  # Root directory (relative to repo root or absolute)
+train: images/train
+val: images/val
+test: images/test
+
+# 10 classes
+nc: 10
+names:
+  0: pedestrian
+  1: people
+  2: bicycle
+  3: car
+  4: van
+  5: truck
+  6: tricycle
+  7: awning-tricycle
+  8: bus
+  9: motor

@@ -1,0 +1,46 @@
+# YOLOv8n Optimized Baseline Configuration
+# Paper: Efficient Tiny Object Detection on Resource-Constrained Devices
+# Key changes from defaults: imgsz=1280, box=10.0, cls=0.3, aggressive augmentation
+
+model: yolov8n.pt
+
+# ── Training ──────────────────────────────────────────────
+epochs: 60          # 150 recommended; limited by Kaggle T4 (~5.25 h/run)
+imgsz: 1280         # Critical: preserves sub-32px object resolution
+batch: 8            # Fits on 15.6 GB T4 VRAM at 1280px
+workers: 4
+device: 0
+
+# ── Optimizer ─────────────────────────────────────────────
+optimizer: SGD
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# ── Loss weights ──────────────────────────────────────────
+box: 10.0           # ↑ from 7.5  — stronger localization gradient for tiny objects
+cls: 0.3            # ↓ from 0.5  — prevent large objects from dominating
+dfl: 1.5
+
+# ── Regularization ────────────────────────────────────────
+label_smoothing: 0.1  # Regularizes ambiguous/low-res tiny instances
+dropout: 0.0
+
+# ── Augmentation ──────────────────────────────────────────
+mosaic: 1.0          # Combines 4 images per sample
+copy_paste: 0.7      # Pastes tiny instances across images
+mixup: 0.15
+degrees: 5.0
+shear: 2.0
+scale: 0.5
+fliplr: 0.5
+flipud: 0.0
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+translate: 0.1
+perspective: 0.0

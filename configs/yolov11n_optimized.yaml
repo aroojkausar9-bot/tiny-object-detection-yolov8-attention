@@ -1,0 +1,33 @@
+# YOLOv11n Optimized Configuration
+# C3k2 backbone — same hyperparameters as YOLOv8n for fair comparison
+
+model: yolo11n.pt   # Ultralytics YOLO11 nano
+
+epochs: 60
+imgsz: 1280
+batch: 8
+workers: 4
+device: 0
+
+optimizer: SGD
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+
+box: 10.0
+cls: 0.3
+dfl: 1.5
+label_smoothing: 0.1
+
+mosaic: 1.0
+copy_paste: 0.7
+mixup: 0.15
+degrees: 5.0
+shear: 2.0
+scale: 0.5
+fliplr: 0.5
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
