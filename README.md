@@ -1,7 +1,7 @@
 # Efficient Tiny Object Detection on Resource-Constrained Devices
 ### Using Enhanced Lightweight YOLO Architectures
 
-> **Arooj Kausar** (536739) & **Syeda Kisaa Fatima** (539682)  
+> **Arooj Kausar** & **Syeda Kisaa Fatima**
 > Department of Artificial Intelligence, NUST Islamabad, Pakistan
 
 ---
@@ -167,7 +167,7 @@ Our key hyperparameter changes from YOLO defaults:
 Prior attention implementations using `register_forward_hook` have a **silent gradient-flow flaw**:
 
 ```python
-# ❌ INCORRECT — gradients do NOT flow through attention weights
+#  INCORRECT — gradients do NOT flow through attention weights
 def attention_hook(module, inputs, outputs):
     return attention_module(outputs)  # detached from computation graph
 
@@ -175,7 +175,7 @@ layer.register_forward_hook(attention_hook)
 ```
 
 ```python
-# ✅ CORRECT — architecture-level injection
+# CORRECT — architecture-level injection
 backbone[idx] = nn.Sequential(
     original_layer,
     attention_module   # proper node in computation graph
@@ -201,6 +201,3 @@ If you use this work, please cite:
 
 ---
 
-## 📄 License
-
-This project is released under the [MIT License](LICENSE).
